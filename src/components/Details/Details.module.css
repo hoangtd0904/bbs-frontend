@@ -1,0 +1,63 @@
+.text {
+    padding: 0 12px;
+    cursor: default;
+    /* position: relative; */
+}
+
+/* post */
+.title {
+    font-size: 4.4rem;
+    padding: 8px 0;
+    word-break: break-all;
+}
+/* more */
+.more {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.option {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-right: 12px;
+    border-radius: 8px;
+    min-width: 80px;
+    height: 40px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-color);
+    background-color: var(--color-white);
+}
+.option.delete:hover {
+    background-color: var(--color-danger);
+    border-color: var(--color-danger);
+    color: var(--color-white);
+}
+.option.edit:hover {
+    background-color: var(--color-warning);
+    border-color: var(--color-warning);
+}
+.option.download:hover {
+    background-color: var(--color-active);
+    border-color: var(--color-active);
+    color: var(--color-white);
+}
+.option:active{
+    opacity: .8;
+}
+/* content */
+.content {
+    text-align: justify;
+    font-size: 110%;
+    line-height: 1.5;
+    font-size: 2.1rem;
+    font-weight: 300;
+    white-space: pre-line;
+}
+
+.content > div > img {
+    max-width: 100%;
+}

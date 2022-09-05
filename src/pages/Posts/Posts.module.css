@@ -1,0 +1,66 @@
+.posts-views {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-white);
+    margin: 8px 0;
+    border-radius: var(--light-border-radius);
+}
+
+.view,
+.sort {
+    padding: 4px 0;
+    color: var(--text-color);
+}
+
+.view-options,
+.sort-options {
+    display: inline-block;
+}
+
+.view-options > button,
+.sort-options > button {
+    background-color: var(--color-white);
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.view-options > button:hover {
+    background-color: var(--light-background-color);
+}
+
+/* pagesize */
+.pagesize {
+    margin-left: 8px;
+}
+
+.pagesize select {
+    height: 42px;
+    width: 40px;
+    border-radius: var(--light-border-radius);
+}
+
+/* add */
+.create-btn {
+    position: sticky;
+    bottom: 0;
+    text-align: end;
+    z-index: 5;
+    padding: 0 0 24px;
+}
+
+.create-btn button {
+    position: absolute;
+    bottom: 16px;
+    right: calc( -68px - 32px);
+    width: 68px;
+    height: 68px;
+    background-color: var(--color-active);
+    color: var(--color-white);
+    font-size: 250%;
+    font-weight: 700;
+    border-radius: 50%;
+}
+
+.create-btn:hover {
+    opacity: 0.9;
+}

@@ -1,0 +1,12 @@
+.time-author {
+    display: block;
+    padding: 0 12px 12px;
+    font-size: 90%;
+    color: var(--light-text-color);
+}
+.name {
+    font-style: italic;
+    font-weight: 600;
+    font-size: 110%;
+    cursor: pointer;
+}
