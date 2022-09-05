@@ -9,7 +9,7 @@ function DefaultLayout({ children, login, setLogin, loading }) {
     return (
         <div className={cx('wrapper')}>
             <Header login={login} setLogin={setLogin}/>
-            <div className={cx('container', 'flex-center')}>
+            <div className={cx('container')}>
                 <div className={cx('content')}>{children}</div>
             </div>
             <footer className={cx('text-center p8')}>©2022 Tran Duc Hoang</footer>

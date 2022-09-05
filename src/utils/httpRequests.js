@@ -9,7 +9,12 @@ export const get = async (url, options = {}) => {
     try {
         return (await httpRequest.get(url, options)).data;
     } catch (e) {
-        alert(e.response.data.error);
+        const error = e.response.data.error
+        if(error !== "No token"){
+            alert(error)
+        } else {
+            console.log(error);
+        }
     }
 };
 

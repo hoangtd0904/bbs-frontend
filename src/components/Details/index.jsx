@@ -91,7 +91,7 @@ function Details({ id }) {
                             {csv ? <CSVDownload data={data} /> : <></>}
                         </div>
                         <div className={cx('content')}>
-                            <p>{post.content}</p>
+                            <p className={cx('mb-12')}>{post.content}</p>
                             <div className={cx('text-center')}>
                                 <img src={`http://localhost:9000/assets/images/${post.thumbnail}`} alt="Post" />
                             </div>
