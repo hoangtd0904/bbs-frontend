@@ -13,8 +13,6 @@ const cx = classNames.bind(styles);
 
 function Posts() {
   const [loading, setLoading] = useState(true);
-  const resetTime = 5; // in minutes
-  const [reset, setReset] = useState(false);
 
   // filter for posts
   const [pageSize, setPageSize] = useState(10);
@@ -29,23 +27,21 @@ function Posts() {
 
   const navigate = useNavigate();
 
-  // console.log(posts===[]);
-  // TODO: display messages if there are no posts to display
+  // request handlers
+  const getAll = async () => {
+    const result = await postServices.getAll(currentPage, pageSize, order);
+    setPosts(result.content);
+    setTotalPosts(result.numberOfElements);
+    setPageCount(result.totalPages);
+    setLoading(false);
+  };
 
   useEffect(() => {
-    const getAll = async () => {
-      const result = await postServices.getAll(currentPage, pageSize, order);
-      setPosts(result.content);
-      setTotalPosts(result.numberOfElements);
-      setPageCount(result.totalPages);
-      setLoading(false);
-    };
-
     getAll();
-  }, [currentPage, pageSize, order, reset]);
+  }, [currentPage, pageSize, order]);
 
-  function handleChange(event) {
-    setCurrentPage(event.selected + 1);
+  function handleChange(page) {
+    setCurrentPage(page);
     setTimeout(() => {
       toTop();
     }, 30);
@@ -60,17 +56,9 @@ function Posts() {
   }
 
   function changeSize(e) {
-    setCurrentPage(1) // reset to first page
+    handleChange(1); // reset to first page
     setPageSize(e.target.value);
-    console.log(currentPage);
     toTop();
-  }
-
-  function resetCount(time) {
-    console.log("resetting...");
-    setTimeout(() => {
-      setReset(!reset);
-    }, time * 60000);
   }
 
   function toTop() {
@@ -90,7 +78,9 @@ function Posts() {
         <>
           <h1 className="text-center">Posts</h1>
           {totalPosts === 0 ? (
-            <p className="text-center">No post yet :( <br/> Create your own post now!</p>
+            <p className="text-center">
+              No post yet :( <br /> Create your own post now!
+            </p>
           ) : (
             <>
               {/* filter */}
@@ -169,7 +159,8 @@ function Posts() {
                 <ReactPaginate
                   breakLabel="..."
                   nextLabel=">"
-                  onPageChange={handleChange}
+                  onPageChange={(e) => handleChange(e.selected + 1)}
+                  forcePage={currentPage - 1}
                   pageRangeDisplayed={3}
                   marginPagesDisplayed={2}
                   pageCount={pageCount}
